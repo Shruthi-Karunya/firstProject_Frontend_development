@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="menuData.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body onload="loadFakeData()" class="bg-gray-100 min-h-screen">
+    <span id="user"></span>
+    <button type="button" onclick="logout()">Logout</button>
+    <div class="flex flex-col p-8">
+        <div class="">
+
+    <input type="button" value="Show Cart Details" onclick="showCartData()"/>
+    <input type="button" value="Show Product" onclick="loadFakeData()"/>
+    Search Item Menu 
+    <input type="number" id="mid"
+    onkeyup="searchItemData()"/> 
+    <button onclick="loadFakeData()">Menu Item</button>
+
+        </div>
+
+        <div class="flex-1">
+
+                <div id="menu-item" class="flex flex-wrap">
+
+                </div>
+
+                <div id="cart-item">
+        
+                </div>
+
+                <div id="view-orders">
+
+                </div>
+                
+        </div>
+        
+    </div>
+</body>
+</html>

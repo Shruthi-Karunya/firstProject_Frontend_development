@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+    <link rel="stylesheet" type="text/css" href="foodStyles.css">  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foodie-Empire</title>
+    <script src="validation.js"></script>
+</head>
+
+   <body>
+    <img src="Images/Food-Login-Background.png" alt="Login_image" class = "image-Right">
+    
+    
+    <div class = "loginBody">
+        <div class ="paraStyle">
+            <p>&nbsp; &nbsp;&nbsp;"Your belly knows best. </p>
+            <p>Come grab your happy place!" </p>
+            <p>&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Foodie Empire</p>
+        </div>
+
+        <h1>Login</h1> 
+
+        <h3> Welcome back!</h3>
+        <div class="para2Style">Enter your email ID and Password to access Foodie-Empire site<br/><br/>
+        <label>Email address</label><br/>
+            <input type="email" name="email" id="emailId" required size="40"/>
+            <br/>
+            <label>Password</label><br/>
+            <input type="password" name="password" id="password" required size="40"/>
+            <br/>
+            <br/>
+            <br/>
+        </div>
+        <div class="formStyle">
+            <form action="dashboard.html" onsubmit="return validate()">
+            <input type="submit" value="Login"/> 
+            </form>
+            
+            <div class ="inputClassreset">
+            <input type="submit" value="Reset" onclick="resetForm()"/>
+            </div>
+        </div>
+    </body>
+
+</html>   
