@@ -2,6 +2,8 @@ let container =""
 let cartInfo=[];
 const PRICE=50;
 let currentUser = sessionStorage.getItem("user")
+let qtyinitialAdd = 0;
+let orderDate = new Date();
 
 if(!currentUser){
     alert("Plz login ")
@@ -28,6 +30,8 @@ function showCartData() {
     cartInfo.forEach((item,i)=> {
         total = total+item.qty*item.price;
         total_qty = item.qty + total_qty;
+
+        
 
         
         list.style.flexDirection = "column";  
@@ -58,12 +62,32 @@ function showCartData() {
     </div>
     `;
 
-// let placeOrderButton = document.createElement("button");
+let placeOrderButton = document.createElement("button");
 
-// placeOrderButton.innerText = "Place order";
-// placeOrderButton.style.backgroundColor = "Orange";
-// placeOrderButton.style.border = "1px solid black";
-//list.appendChild(placeOrderButton);
+placeOrderButton.innerText = "Place order";
+placeOrderButton.style.backgroundColor = "Orange";
+placeOrderButton.style.border = "1px solid black";
+list.appendChild(placeOrderButton);
+
+placeOrderButton.addEventListener("click",()=> {
+    alert("Order placed. Happy day");
+    yourorders();
+    orderDate = new Date().toLocaleDateString();
+});
+
+let clearCart = document.createElement("button");
+
+clearCart.innerText = "Clear cart";
+clearCart.style.backgroundColor = "white";
+clearCart.style.border = "1px solid black";
+list.appendChild(clearCart);
+
+clearCart.addEventListener("click",()=> {
+    alert("Cart is cleared. Add your items of choice again");
+    cartInfo=[];
+    list.innerHTML="";
+    homePage();
+});
 
 //return total_qty;
     
@@ -84,7 +108,14 @@ function showCartData() {
 // }
 function updateQty(index,change){
     console.log("event called.")
-    cartInfo[index].qty+=change;   
+    
+    cartInfo[index].qty+=change;  
+    if (cartInfo[index].qty === 0) {
+            cartInfo.splice(index,1);
+            qtyinitialAdd = qtyinitialAdd - 1;
+                const cartBtn = document.getElementById("cartBtn"); 
+                cartBtn.textContent = `Cart (${qtyinitialAdd})`;
+        } 
     console.log(cartInfo)
     // let totalQtydisplay1 =  showCartData();
     // const cartBtn = document.getElementById("cartBtn"); 
@@ -144,20 +175,19 @@ function loadFakeData() {
         
 
         button1.addEventListener("click",()=> {
-            //let qtyinitialAdd = 0
+            
             console.log(menu.name)
             let result = cartInfo.find(cartItem =>cartItem.name==menu.name)
-            // qtyinitialAdd = qtyinitialAdd + 1;
-            // const cartBtn = document.getElementById("cartBtn"); 
+                        // const cartBtn = document.getElementById("cartBtn"); 
             // cartBtn.textContent = `Cart (${qtyinitialAdd})`;
 
             if(result==undefined){
                 
                 cartInfo.push({name:menu.name,qty:1,price:PRICE})
-                //qtyinitialAdd = qtyinitialAdd + 1;
+                qtyinitialAdd = qtyinitialAdd + 1;
                 alert("Item Added in cart")
-            // const cartBtn = document.getElementById("cartBtn"); 
-            // cartBtn.textContent = `Cart (${qtyinitialAdd})`;
+                const cartBtn = document.getElementById("cartBtn"); 
+                cartBtn.textContent = `Cart (${qtyinitialAdd})`;
                 
             }else {
                 alert("Item already present in cart")
@@ -194,6 +224,47 @@ function services() {
 }
 
 function yourorders() {
+       
+    document.getElementById("cart-item").style.display="none"
+    
+
+    let p = document.createElement("p");
+    p.innerText = "Thank you for placing the order. The order will reach you soon";
+    document.getElementById("view-orders").appendChild(p);
+    const p1 = document.getElementById("view-orders");
+    p1.style.display = "flex";        
+    p1.style.flexDirection = "column";  
+    p1.style.position = "fixed";        
+    p1.style.top = "170px";         
+    p1.style.left = "220px";         
+    p1.style.width = "1350px";           
+    p1.style.height = "480px";          
+    p1.style.overflowY = "auto";     
+    //p1.style.border = "1px solid #ccc"; 
+
+    let p2 = document.createElement("p");
+    p2.innerText = "Click below to get get into Orders page";
+    document.getElementById("view-orders").appendChild(p2);
+
+    let ordersButton = document.createElement("button");
+
+    ordersButton.innerText = "Orders";
+    ordersButton.style.backgroundColor = "Orange";
+    ordersButton.style.border = "1px solid black";
+    ordersButton.style.width = "200px";
+    ordersButton.style.marginTop = "35px";
+
+    document.getElementById("view-orders").appendChild(ordersButton);
+
+    ordersButton.addEventListener("click",()=> {
+        //window.location.href = "Orders.html"
+        document.getElementById("view-orders").innerHTML = "";
+        yourorders1();
+});
+}
+
+function yourorders1() {
+    //document.getElementById("view-orders").innerHTML = "";
     window.location.href="Orders.html";
 }
 
@@ -203,4 +274,8 @@ function wishlists() {
 
 function contact() {
     window.location.href="Contact.html";
+}
+
+function homePage() {
+    window.location.href="dashboard.html";
 }
