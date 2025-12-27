@@ -55,3 +55,52 @@ h3 {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     align-items: flex-start; /* Aligns items to the start vertically */
 }
+
+
+.logoutButtondisplay {
+    display: grid;
+    position:fixed;
+    top: 20px;       
+    right: 20px;     
+    z-index: 100;
+    background-color: brown;   
+    width: 60px;
+    color: aliceblue;
+}
+
+.itemList {
+    display: grid;
+    margin: 20px;
+    border-color: 2px solid darkslategray;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.listContainerOne {
+    position: fixed;
+    bottom: 150px;
+    left: 50px;
+     }
+
+.itemList1, .itemList2, .itemList3, .itemList4, .itemList5, .itemList6 {
+    margin: 10px;
+    font-size: 20px;
+    
+}
+
+.menuListitems {
+    position:fixed;
+    display: flex;
+    left:300px;
+}
+
+.searchItem, .showCartButton, .showProductButton, .menuItemButton {
+    position: relative;
+    margin: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+}
+
+.logoImageClass {
+    margin: 10px;
+    width: 120px;
+}

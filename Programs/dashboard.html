@@ -1,31 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" type="text/css" href="foodStyles.css">  
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Foodie-Empire Menu</title>
     <script src="menuData.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body onload="loadFakeData()" class="bg-gray-100 min-h-screen">
-    <span id="user"></span>
-    <button type="button" onclick="logout()">Logout</button>
-    <div class="flex flex-col p-8">
-        <div class="">
 
-    <input type="button" value="Show Cart Details" onclick="showCartData()"/>
-    <input type="button" value="Show Product" onclick="loadFakeData()"/>
-    Search Item Menu 
-    <input type="number" id="mid"
-    onkeyup="searchItemData()"/> 
-    <button onclick="loadFakeData()">Menu Item</button>
+<body onload="loadFakeData()" class="bg-gray-100 min-h-screen">
+
+    <Div class = "listContainerOne">
+        <img src="/Images/FoodLogo.png" alt="Food logo" class="logoImageClass">
+        <ul class = "itemList">
+            <ui class ="itemList1" onclick="aboutus()">About</ui>
+            <ui class ="itemList2" onclick="services()">Services</ui>
+            <ui class="itemList3" onclick="yourorders()">Your Orders</ui>
+            <ui class="itemList4" onclick="wishlists()">Wishlists</ui>
+            <ui class="itemList5" onclick="showCartData()">Cart</ui>
+             <!-- <ui class="itemList5" id="cartBtn" onclick="updateCart()">Cart</ui> -->
+            <ui class="itemList6" onclick="contact()">Contact</ui>
+        </ul>
+    </Div>
+    <span id="user"></span>
+
+    <div class = "logoutButtondisplay">
+    <button  type="button" onclick="logout()">Logout</button></div>
+    <div class="flex flex-col p-8">
+
+    <div class="menuListitems">
+
+   
+    <input class= "searchItem" type="number" id="mid" onkeyup="searchItemData()"/> 
+    <!-- <button class = "showCartButton" onclick="showCartData()">Show Cart Details</button> -->
+     
+    <button class = "menuItemButton" id = "loadFakedataInitial" onclick="loadFakeData()">Menu Item</button>
 
         </div>
 
         <div class="flex-1">
 
                 <div id="menu-item" class="flex flex-wrap">
-
+                        
                 </div>
 
                 <div id="cart-item">
