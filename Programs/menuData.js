@@ -106,8 +106,18 @@ function loadfilteredData() {
 
 
 
+
 function showCartData() {
-    //console.log(cartInfo.length)
+
+    if(qtyinitialAdd === 0)
+    {
+        alert("Oops!! Cart is empty!! Grab something to eat from Foodie-Empire");
+    }
+
+    document.getElementById("view-orders").hidden = true;   // hide
+    //document.getElementById("view-orders").hidden = false;  // show
+    //document.getElementById("view-orders").innerHTML = "";
+
     document.getElementById("menu-item").style.display="none"
     document.getElementById("cart-item").style.display="flex"
     let list = document.getElementById("cart-item")
@@ -163,8 +173,40 @@ function showCartData() {
 
         placeOrderButton.addEventListener("click",()=> {
         alert("Order placed. Happy day");
-        yourorders();
-        orderDate = new Date().toLocaleDateString();
+        //saveOrder(cartInfo);
+        //yourorders();
+
+    document.getElementById("cart-item").style.display="none"
+       
+    document.getElementById("post-order").innerHTML = "Thank you for placing the order. The order will reach you soon";
+    const p1 = document.getElementById("post-order");
+    p1.style.display = "flex";        
+    p1.style.flexDirection = "column";  
+    p1.style.position = "fixed";        
+    p1.style.top = "170px";         
+    p1.style.left = "220px";         
+    p1.style.width = "1350px";           
+    p1.style.height = "480px";          
+    p1.style.overflowY = "auto";     
+    p1.style.fontSize = "20px";
+
+    // let orderRedirect = document.createElement("button");
+    // orderRedirect.innerHTML = "Order Summary";
+    // //document.getElementById("post-oder").appendChild(orderRedirect);
+    // orderRedirect.style.backgroundColor = "Orange";
+    // orderRedirect.style.border = "2px solid black";
+    // orderRedirect.style.width = "120px";
+    // orderRedirect.style.cursor = "pointer";
+
+    // button1.addEventListener("click",()=> {
+    //     yourorders1();
+    // });
+
+    cartInfo=[];
+    const cartBtn = document.getElementById("cartBtn"); 
+    cartBtn.textContent = `Cart`;
+    qtyinitialAdd = 0;
+        // orderDate = new Date().toLocaleDateString();
             });
 
         let clearCart = document.createElement("button");
@@ -177,11 +219,11 @@ function showCartData() {
         clearCart.addEventListener("click",()=> {
         alert("Cart is cleared. Add your items of choice again");
         cartInfo=[];
-        list.innerHTML="";
-        // placeOrderButton.remove();
-        // clearCart.remove();
-        homePage();
-        });
+        document.getElementById("cart-item").style.display = "none";
+        const cartBtn = document.getElementById("cartBtn"); 
+        cartBtn.textContent = `Cart`;
+        qtyinitialAdd = 0;
+     });
     
     }
 }
@@ -204,6 +246,9 @@ function updateQty(index,change){
 
 
 function loadFakeData() {
+    document.getElementById("post-order").style.display = "none";
+    //document.getElementById("view-orders").hidden = true; 
+    document.getElementById("view-orders").innerHTML = "";
     if (container==="") {
     let h1 = document.createElement("p");
     let user = sessionStorage.getItem("user");
@@ -278,8 +323,11 @@ function loadFakeData() {
         div.style.alignItems = "center"; 
 
         document.getElementById("menu-item").appendChild(div);
+
     })
 });  
+
+//document.getElementById("place-order").style.display = "none";
 
 }
 
@@ -293,20 +341,65 @@ function logout() {
 }
 
 function aboutus() {
-    window.location.href="Aboutus.html";
+    document.getElementById("view-orders").hidden = false; 
+    document.getElementById("post-order").hidden = true;
+    document.getElementById("cart-item").style.display="none";
+    const D = CommonFunc;
+    D();
 }
 
 function services() {
-    window.location.href="Services.html";
+    document.getElementById("view-orders").hidden = false;
+    document.getElementById("post-order").hidden = true; 
+    document.getElementById("cart-item").style.display="none";
+    const E = CommonFunc;
+    E();
+    
 }
 
-function yourorders() {
-       
-    document.getElementById("cart-item").style.display="none"
+// function yourorders() {
     
+//     document.getElementById("post-order").innerHTML = "";
+//        document.getElementById("cart-item").style.display="none"
+       
+//     document.getElementById("post-order").innerHTML = "Thank you for placing the order. The order will reach you soon";
+//         const p1 = document.getElementById("post-order");
+//     p1.style.display = "flex";        
+//     p1.style.flexDirection = "column";  
+//     p1.style.position = "fixed";        
+//     p1.style.top = "170px";         
+//     p1.style.left = "220px";         
+//     p1.style.width = "1350px";           
+//     p1.style.height = "480px";          
+//     p1.style.overflowY = "auto";     
+//     p1.style.fontSize = "20px";
+
+//     // let orderRedirect = document.createElement("button");
+//     // orderRedirect.innerHTML = "Order Summary";
+//     // //document.getElementById("post-oder").appendChild(orderRedirect);
+//     // orderRedirect.style.backgroundColor = "Orange";
+//     // orderRedirect.style.border = "2px solid black";
+//     // orderRedirect.style.width = "120px";
+//     // orderRedirect.style.cursor = "pointer";
+
+//     // button1.addEventListener("click",()=> {
+//     //     yourorders1();
+//     // });
+
+//     cartInfo=[];
+//     const cartBtn = document.getElementById("cartBtn"); 
+//     cartBtn.textContent = `Cart`;
+//     qtyinitialAdd = 0;
+    
+// }
+
+function CommonFunc() {
+    
+    document.getElementById("menu-item").style.display="none"
+    document.getElementById("view-orders").innerHTML = "";
 
     let p = document.createElement("p");
-    p.innerText = "Thank you for placing the order. The order will reach you soon";
+    p.innerText = "You are in the page that need to be Enhanced still";
     document.getElementById("view-orders").appendChild(p);
     const p1 = document.getElementById("view-orders");
     p1.style.display = "flex";        
@@ -317,41 +410,110 @@ function yourorders() {
     p1.style.width = "1350px";           
     p1.style.height = "480px";          
     p1.style.overflowY = "auto";     
-    
-
-    let p2 = document.createElement("p");
-    p2.innerText = "Click below to get get into Orders page";
-    document.getElementById("view-orders").appendChild(p2);
-
-    let ordersButton = document.createElement("button");
-
-    ordersButton.innerText = "Orders";
-    ordersButton.style.backgroundColor = "Orange";
-    ordersButton.style.border = "1px solid black";
-    ordersButton.style.width = "200px";
-    ordersButton.style.marginTop = "35px";
-
-    document.getElementById("view-orders").appendChild(ordersButton);
-
-    ordersButton.addEventListener("click",()=> {
-        document.getElementById("view-orders").innerHTML = "";
-        yourorders1();
-});
+    p1.style.fontSize = "20px";
 }
 
 function yourorders1() {
-    window.location.href="Orders.html";
+    document.getElementById("view-orders").hidden = false; 
+    document.getElementById("post-order").innerHTML = "";
+    document.getElementById("cart-item").style.display="none";
+    const A=CommonFunc;
+    A();
+    // showOrderHistory();
 }
-
 function wishlists() {
-    window.location.href="Wishlists.html";
+    document.getElementById("view-orders").hidden = false; 
+    document.getElementById("post-order").hidden = true;
+    document.getElementById("cart-item").style.display="none";
+    const B = CommonFunc;
+    B();
 }
 
 function contact() {
-    window.location.href="Contact.html";
+     document.getElementById("view-orders").hidden = false; 
+     document.getElementById("post-order").hidden = true;
+     document.getElementById("cart-item").style.display="none";
+    const C = CommonFunc;
+    C();
 }
 
-function homePage() {
-    window.location.href="dashboard.html";
-}
 
+document.addEventListener("DOMContentLoaded", () => {
+  const listItems = document.querySelectorAll(".itemList li");
+  const menuBtn = document.getElementById("loadFakedataInitial");
+
+  // Highlight clicked li
+  listItems.forEach(item => {
+    item.addEventListener("click", function() {
+      // clear all li highlights and menu button highlight
+      listItems.forEach(li => li.classList.remove("active"));
+      menuBtn.classList.remove("active");
+
+      // add active to clicked li
+      this.classList.add("active");
+    });
+  });
+
+  // Highlight menu button and clear li highlights
+  menuBtn.addEventListener("click", function() {
+    listItems.forEach(li => li.classList.remove("active"));
+    this.classList.add("active");
+  });
+});
+
+
+// function saveOrder(cartInfo) {
+//   const orderDate = new Date().toLocaleString();
+//   const order = {
+//     date: orderDate,
+//     items: cartInfo.map(item => ({
+//       name: item.name,
+//       qty: item.qty,
+//       price: item.price
+//     }))
+//   };
+
+//   // Get existing history or start fresh
+//   let history = JSON.parse(localStorage.getItem("orderHistory")) || [];
+//   history.push(order);
+
+//   // Save back
+//   localStorage.setItem("orderHistory", JSON.stringify(history));
+// }
+
+// function showOrderHistory() {
+//   const summaryContainer = document.getElementById("view-orders");
+//   summaryContainer.innerHTML = "";
+
+//   const history = JSON.parse(localStorage.getItem("orderHistory")) || [];
+
+//   if (history.length === 0) {
+//     summaryContainer.textContent = "No past orders yet.";
+//     return;
+//   }
+
+//   history.forEach((order, index) => {
+//     const section = document.createElement("div");
+//     section.className = "order-block";
+
+//     const heading = document.createElement("h3");
+//     heading.textContent = `Order #${index + 1} — ${order.date}`;
+//     section.appendChild(heading);
+
+//     const list = document.createElement("ul");
+//     let total = 0;
+//     order.items.forEach(item => {
+//       const li = document.createElement("li");
+//       li.textContent = `${item.name} — Qty: ${item.qty} — Price: ${item.qty * item.price}`;
+//       list.appendChild(li);
+//       total += item.qty * item.price;
+//     });
+//     section.appendChild(list);
+
+//     const totalPara = document.createElement("p");
+//     totalPara.textContent = `Total: ${total}`;
+//     section.appendChild(totalPara);
+
+//     summaryContainer.appendChild(section);
+//   });
+// }

@@ -14,13 +14,13 @@
     <Div class = "listContainerOne">
         <img src="/Images/FoodLogo.png" alt="Food logo" class="logoImageClass">
         <ul class = "itemList">
-            <ui class ="itemList1" onclick="aboutus()">About</ui>
-            <ui class ="itemList2" onclick="services()">Services</ui>
-            <ui class="itemList3" onclick="yourorders1()">Your Orders</ui>
-            <ui class="itemList4" onclick="wishlists()">Wishlists</ui>
-            <ui class="itemList5" id="cartBtn" onclick="showCartData()">Cart</ui>
+            <li class ="itemList1" onclick="aboutus()">About</li>
+            <li class ="itemList2" onclick="services()">Services</li>
+            <li class="itemList3" onclick="yourorders1()">Your Orders</li>
+            <li class="itemList4" onclick="wishlists()">Wishlists</li>
+            <li class="itemList5" id="cartBtn" onclick="showCartData()">Cart</li>
              <!-- <ui class="itemList5" id="cartBtn" onclick="updateCart()">Cart</ui> -->
-            <ui class="itemList6" onclick="contact()">Contact</ui>
+            <li class="itemList6" onclick="contact()">Contact</li>
         </ul>
     </Div>
     <span id="user"></span>
@@ -31,10 +31,11 @@
 
     <div class="menuListitems">
         <label id ="labelSearch" for="searchBox">Search here:</label>
-        <input type="text" id="searchBox" placeholder="Search food..." onclick="searchItemData()">
+        <input type="text" id="searchBox" placeholder="Search food..." onclick="searchItemData()"/>
         <ul id="results"></ul>
-        <!-- <button class = "showCartButton" onclick="showCartData()">Show Cart Details</button> -->
+               <!-- <button class = "showCartButton" onclick="showCartData()">Show Cart Details</button> -->
         <button class = "menuItemButton" id = "loadFakedataInitial" onclick="loadFakeData()">Menu Item</button>
+         
     </div>
 
         <div class="flex-1">
@@ -48,6 +49,14 @@
                 </div>
 
                 <div id="view-orders">
+
+                </div>
+
+                <div id="post-order">
+
+                </div>
+
+                <div id="order-history">
 
                 </div>
                 
