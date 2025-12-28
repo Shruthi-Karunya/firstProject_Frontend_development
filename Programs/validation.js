@@ -1,16 +1,5 @@
 function validate() {
 
-    function gotoNextSteps () {
-    if (userFound) {
-        alert("Login successful! Welcome");
-        sessionStorage.setItem("user",emailId1);
-        return true;
-    } else {
-        alert("Invalid username or password. Please try again.");
-        return false;
-    }
-        }
-
     let user1 = {emailId:"raj@gmail.com",password:"raj@123"};
     let user2 = {emailId:"ravi@gmail.com",password:"ravi@453"};
     let user3 = {emailId:"ramesh@gmail.com",password:"ramesh@786"};
@@ -31,20 +20,30 @@ function validate() {
         user.emailId === emailId1 && user.password === formPassword1
     );
     
+  if (userFound) {
+        alert("Login successful! Welcome");
+        sessionStorage.setItem("user",emailId1);
+        //window.location.href ="dashboard.html";
+        return true;
+        
+    } else {
+        alert("Invalid username or password. Please try again.");
+        return false;
+    }
 
-    
-//     document.getElementById("password").addEventListener("keypress", function(e) {
-//     if (e.key === "Enter") {
-//     gotoNextSteps();
-//     exit;
-//     }
-// } );
 
-gotoNextSteps();
 
 }
 
+document.getElementById("password").addEventListener("keydown", function(e) {
+  if (e.key === "Enter") {
+    e.preventDefault(); // prevent form submission/reload
+    validate();         // call your login function
+  }
+});
+
 function resetForm(){
-    window.location.href="login.html";
+    document.getElementById("emailId").value = ""; 
+    document.getElementById("password").value = "";
 }
 

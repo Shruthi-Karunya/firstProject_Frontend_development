@@ -44,30 +44,44 @@ h3 {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 
-.inputClassreset {
+/* .inputClassreset {
     display: flex;
+    gap:10px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+} */
+
+.loginForm {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+} 
+
+.buttonRow {
+  display: flex;
+  gap: 10px; /* space between buttons */
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size:20px;
 }
 
-.formStyle {
-    display: inline-flex;
-    gap: 10px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    align-items: flex-start; /* Aligns items to the start vertically */
+.buttonRow input {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 16px;   /* increase text size */
+  padding: 4px 10px; /* optional: make buttons bigger */
 }
-
 
 .logoutButtondisplay {
     display: grid;
     position:fixed;
-    cursor: pointer;
     top: 20px;       
     right: 20px;     
     z-index: 100;
-    background-color: brown;   
-    width: 60px;
-    color: aliceblue;
-    
+}
+
+.logoutButtondisplay button {
+  cursor: pointer;
+  background-color: brown;
+  color: aliceblue;
+  width: 80px;
+  border: none;
+  padding: 6px;
 }
 
 .itemList {
