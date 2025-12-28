@@ -51,10 +51,12 @@ function showCartData() {
         <span class="font-bold">${PRICE*item.qty}</span>
         </div>
         `;
+
+
+            
     });
 
-
-    list.innerHTML += `
+list.innerHTML += `
     <div class="flex justify-between items-center p-2 border-t font-bold">
     <span>Total</span>
     <span></span> <!-- empty middle column -->
@@ -86,26 +88,15 @@ clearCart.addEventListener("click",()=> {
     alert("Cart is cleared. Add your items of choice again");
     cartInfo=[];
     list.innerHTML="";
+    // placeOrderButton.remove();
+    // clearCart.remove();
     homePage();
 });
-
-//return total_qty;
     
+
 }
 
 
-// function updateCart() {
-//   // Call showCartData and get the quantity
-//     let totalQtydisplay = showCartData();
-
-//     const cartBtn = document.getElementById("cartBtn"); 
-//     cartBtn.textContent = `Cart (${totalQtydisplay})`;
-// }
-
-// function renderCartDetails(itemInCart,index) {
-//         console.log(itemInCart+""+index)
-//         cartInfo
-// }
 function updateQty(index,change){
     console.log("event called.")
     
@@ -117,9 +108,7 @@ function updateQty(index,change){
                 cartBtn.textContent = `Cart (${qtyinitialAdd})`;
         } 
     console.log(cartInfo)
-    // let totalQtydisplay1 =  showCartData();
-    // const cartBtn = document.getElementById("cartBtn"); 
-    // cartBtn.textContent = `Cart (${totalQtydisplay1})`;
+    
     showCartData();
 }
 
@@ -178,9 +167,7 @@ function loadFakeData() {
             
             console.log(menu.name)
             let result = cartInfo.find(cartItem =>cartItem.name==menu.name)
-                        // const cartBtn = document.getElementById("cartBtn"); 
-            // cartBtn.textContent = `Cart (${qtyinitialAdd})`;
-
+              
             if(result==undefined){
                 
                 cartInfo.push({name:menu.name,qty:1,price:PRICE})
@@ -194,8 +181,7 @@ function loadFakeData() {
             }
             
         })
-        //div.appendChild(divContent);
-        //document.getElementsByTagName("body")[0].appendChild(div)
+        
         div.style.display = "flex"; 
         div.style.flexDirection = "column"; 
         div.style.alignItems = "center"; 
@@ -240,7 +226,7 @@ function yourorders() {
     p1.style.width = "1350px";           
     p1.style.height = "480px";          
     p1.style.overflowY = "auto";     
-    //p1.style.border = "1px solid #ccc"; 
+    
 
     let p2 = document.createElement("p");
     p2.innerText = "Click below to get get into Orders page";
@@ -257,14 +243,12 @@ function yourorders() {
     document.getElementById("view-orders").appendChild(ordersButton);
 
     ordersButton.addEventListener("click",()=> {
-        //window.location.href = "Orders.html"
         document.getElementById("view-orders").innerHTML = "";
         yourorders1();
 });
 }
 
 function yourorders1() {
-    //document.getElementById("view-orders").innerHTML = "";
     window.location.href="Orders.html";
 }
 
