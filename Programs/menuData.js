@@ -4,6 +4,7 @@ const PRICE=50;
 let currentUser = sessionStorage.getItem("user")
 let qtyinitialAdd = 0;
 let orderDate = new Date();
+let recipes = [];
 
 if(!currentUser){
     alert("Plz login ")
@@ -11,11 +12,98 @@ if(!currentUser){
 }
 
 function searchItemData(){
-    let mid = document.getElementById("mid").value
-   fetch('https://dummyjson.com/recipes/'+mid)
-    .then(res => res.json())
-    .then(result=>console.log(result)).catch(error=>console.log(error))
+
+    const searchBox = document.getElementById("searchBox");
+   
+    searchBox.addEventListener("input", function() {
+      const query = searchBox.value.toLowerCase();
+
+      if (query.length === 0) { // Clear results if nothing typed 
+      //document.getElementById("menu-item").innerHTML = ""; 
+      return;
+    }
+
+      const filtered = recipes.filter(recipe =>
+        recipe.name.toLowerCase().includes(query)
+      );
+      displayResults(filtered);
+    });
+
+ 
+    //loadRecipes();
+    loadfilteredData();
 }
+
+
+function displayResults(list) {
+  const menu = document.getElementById("menu-item");
+  menu.innerHTML = ""; // clear old items
+
+  if (list.length === 0) {
+    menu.innerHTML = "<p>No recipes found</p>";
+    return;
+  }
+
+  list.forEach(recipe => {
+    let div = document.createElement("div");
+
+    let img = document.createElement("img");
+    img.src = recipe.image;
+    img.className = "w-36 m-4 p-2 text-center bg-white";
+
+    let p = document.createElement("p");
+    p.innerText = recipe.name;
+   // alert (recipe.name);
+
+    let button1 = document.createElement("button");
+    button1.innerText = "Add to cart";
+    button1.style.backgroundColor = "Orange";
+    button1.style.border = "2px solid black";
+    button1.style.width = "120px";
+    button1.style.cursor = "pointer";
+
+    div.appendChild(img);
+    div.appendChild(p);
+    div.appendChild(button1);
+    menu.appendChild(div);
+
+    div.style.display = "flex";
+    div.style.flexDirection = "column";
+    div.style.alignItems = "center";
+
+    menu.appendChild(div);
+    //document.getElementById("menu-item").appendChild(div);
+
+            button1.addEventListener("click",()=> {
+            //alert (menu.name)
+            let result = cartInfo.find(cartItem =>cartItem.name==recipe.name)
+              
+            if(!result){
+                
+                cartInfo.push({name:recipe.name,qty:1,price:PRICE})
+                qtyinitialAdd = qtyinitialAdd + 1;
+                alert("Item Added in cart")
+                const cartBtn = document.getElementById("cartBtn"); 
+                cartBtn.textContent = `Cart (${qtyinitialAdd})`;
+                
+            }else {
+                alert("Item already present in cart")
+            }
+            
+        })
+  });
+}
+
+
+function loadfilteredData() {
+  fetch("https://dummyjson.com/recipes")
+    .then(res => res.json())
+    .then(result => {
+      recipes = result.recipes; // ✅ store recipes globally
+      displayResults(recipes);  // show all initially
+    });
+}
+
 
 
 function showCartData() {
@@ -137,7 +225,7 @@ function loadFakeData() {
     menu.style.width = "1350px";           
     menu.style.height = "480px";          
     menu.style.overflowY = "auto";     
-    menu.style.border = "1px solid #ccc"; 
+    //menu.style.border = "1px solid #ccc"; 
 
 
     
@@ -159,6 +247,7 @@ function loadFakeData() {
         button1.style.backgroundColor = "Orange";
         button1.style.border = "2px solid black";
         button1.style.width = "120px";
+        button1.style.cursor = "pointer";
 
         div.appendChild(img);
         div.appendChild(p);
@@ -265,3 +354,4 @@ function contact() {
 function homePage() {
     window.location.href="dashboard.html";
 }
+
