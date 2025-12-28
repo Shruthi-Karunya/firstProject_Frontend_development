@@ -56,44 +56,46 @@ function showCartData() {
             
     });
 
-list.innerHTML += `
-    <div class="flex justify-between items-center p-2 border-t font-bold">
-    <span>Total</span>
-    <span></span> <!-- empty middle column -->
-    <span>${total}</span>
-    </div>
-    `;
+    if (cartInfo.length > 0) {
 
-let placeOrderButton = document.createElement("button");
+            list.innerHTML += `
+            <div class="flex justify-between items-center p-2 border-t font-bold">
+            <span>Total</span>
+            <span></span> <!-- empty middle column -->
+            <span>${total}</span>
+            </div>
+            `;
 
-placeOrderButton.innerText = "Place order";
-placeOrderButton.style.backgroundColor = "Orange";
-placeOrderButton.style.border = "1px solid black";
-list.appendChild(placeOrderButton);
+        let placeOrderButton = document.createElement("button");
 
-placeOrderButton.addEventListener("click",()=> {
-    alert("Order placed. Happy day");
-    yourorders();
-    orderDate = new Date().toLocaleDateString();
-});
+        placeOrderButton.innerText = "Place order";
+        placeOrderButton.style.backgroundColor = "Orange";
+        placeOrderButton.style.border = "1px solid black";
+        list.appendChild(placeOrderButton);
 
-let clearCart = document.createElement("button");
+        placeOrderButton.addEventListener("click",()=> {
+        alert("Order placed. Happy day");
+        yourorders();
+        orderDate = new Date().toLocaleDateString();
+            });
 
-clearCart.innerText = "Clear cart";
-clearCart.style.backgroundColor = "white";
-clearCart.style.border = "1px solid black";
-list.appendChild(clearCart);
+        let clearCart = document.createElement("button");
 
-clearCart.addEventListener("click",()=> {
-    alert("Cart is cleared. Add your items of choice again");
-    cartInfo=[];
-    list.innerHTML="";
-    // placeOrderButton.remove();
-    // clearCart.remove();
-    homePage();
-});
+        clearCart.innerText = "Clear cart";
+        clearCart.style.backgroundColor = "white";
+        clearCart.style.border = "1px solid black";
+        list.appendChild(clearCart);
+
+        clearCart.addEventListener("click",()=> {
+        alert("Cart is cleared. Add your items of choice again");
+        cartInfo=[];
+        list.innerHTML="";
+        // placeOrderButton.remove();
+        // clearCart.remove();
+        homePage();
+        });
     
-
+    }
 }
 
 
